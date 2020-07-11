@@ -433,7 +433,7 @@
  *   USE_OCR2A_AS_TOP sacrifices duty cycle control resolution to achieve this broader range of frequencies.
  */
 #if ENABLED(FAST_PWM_FAN)
-  #define FAST_PWM_FAN_FREQUENCY 122 //MEK 31400
+  #define FAST_PWM_FAN_FREQUENCY 60 //MEK 31400
   //#define USE_OCR2A_AS_TOP
 #endif
 
@@ -701,7 +701,7 @@
    * This feature was designed for Delta's with very fast Z moves however higher speed cartesians may function
    * If the machine cannot raise the probe fast enough after a trigger, it may enter a fault state.
    */
-  //#define BLTOUCH_HS_MODE
+  #define BLTOUCH_HS_MODE
 
   // Safety: Enable voltage mode settings in the LCD menu.
   //#define BLTOUCH_LCD_VOLTAGE_MENU

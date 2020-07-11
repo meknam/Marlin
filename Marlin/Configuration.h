@@ -996,7 +996,7 @@
 #define XY_PROBE_SPEED 8000
 
 // Feedrate (mm/m) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-#define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
+#define Z_PROBE_SPEED_FAST (HOMING_FEEDRATE_Z * 2)
 
 // Feedrate (mm/m) for the "accurate" probe of each point
 #define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
@@ -1027,10 +1027,10 @@
  * Example: `M851 Z-5` with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
-#define Z_CLEARANCE_DEPLOY_PROBE   15 // Z Clearance for Deploy/Stow
-#define Z_CLEARANCE_BETWEEN_PROBES 10 // Z Clearance between probe points
-#define Z_CLEARANCE_MULTI_PROBE    10 // Z Clearance between multiple probes
-//#define Z_AFTER_PROBING          10 // Z position after probing is done
+#define Z_CLEARANCE_DEPLOY_PROBE   10 // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
+#define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
+//#define Z_AFTER_PROBING           5 // Z position after probing is done
 
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
 
@@ -1039,7 +1039,7 @@
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
-//#define Z_MIN_PROBE_REPEATABILITY_TEST
+#define Z_MIN_PROBE_REPEATABILITY_TEST
 
 // Before deploy/stow pause for user confirmation
 //#define PAUSE_BEFORE_DEPLOY_STOW
@@ -1122,8 +1122,8 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 235
-#define Y_BED_SIZE 235
+#define X_BED_SIZE 225
+#define Y_BED_SIZE 220
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1280,7 +1280,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 3
+  #define GRID_MAX_POINTS_X 4
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
@@ -1940,7 +1940,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //
 // ReprapWorld Graphical LCD
@@ -2026,7 +2026,7 @@
 // This is RAMPS-compatible using a single 10-pin connector.
 // (For CR-10 owners who want to replace the Melzi Creality board but retain the display)
 //
-#define CR10_STOCKDISPLAY
+//#define CR10_STOCKDISPLAY
 
 //
 // Ender-2 OEM display, a variant of the MKS_MINI_12864
@@ -2194,25 +2194,25 @@
 // @section extras
 
 // Increase the FAN PWM frequency. Removes the PWM noise but increases heating in the FET/Arduino
-#define FAST_PWM_FAN
+//#define FAST_PWM_FAN
 
 // Use software PWM to drive the fan, as for the heaters. This uses a very low frequency
 // which is not as annoying as with the hardware PWM. On the other hand, if this frequency
 // is too low, you should also increment SOFT_PWM_SCALE.
-//#define FAN_SOFT_PWM
+#define FAN_SOFT_PWM
 
 // Incrementing this by 1 will double the software PWM frequency,
 // affecting heaters, and the fan if FAN_SOFT_PWM is enabled.
 // However, control resolution will be halved for each increment;
 // at zero value, there are 128 effective control positions.
 // :[0,1,2,3,4,5,6,7]
-#define SOFT_PWM_SCALE 0
+#define SOFT_PWM_SCALE 2
 
 // If SOFT_PWM_SCALE is set to a value higher than 0, dithering can
 // be used to mitigate the associated resolution loss. If enabled,
 // some of the PWM cycles are stretched so on average the desired
 // duty cycle is attained.
-//#define SOFT_PWM_DITHER
+#define SOFT_PWM_DITHER
 
 // Temperature status LEDs that display the hotend and bed temperature.
 // If all hotends, bed temperature, and target temperature are under 54C
